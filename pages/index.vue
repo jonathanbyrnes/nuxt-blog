@@ -6,8 +6,7 @@ const articles = ref([1, 2, 3, 4, 5])
 
 const config=useRuntimeConfig()
 
-// const { data } = await useFetch('https://localhost:8000/api/posts')
-// console.log(data.value)
+const { data } = await useFetch(config.API_URL + '/posts')
 
 </script>
 
@@ -17,9 +16,9 @@ const config=useRuntimeConfig()
             <h1>List of Articles</h1>
         </div>
 
-        <div v-for="(index, article) in articles" :key="index">
-            <h2>Article - {{ article }}</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum illum asperiores, ad illo tenetur officiis aliquid distinctio. Provident cumque magni fuga maiores adipisci ducimus dolor magnam cupiditate, accusantium quasi eaque.</p>
+        <div v-for="(index, article) in data" :key="index">
+            <h2>Article - {{ article?.title }}</h2>
+            <p>{{ article?.post_content }}</p>
         </div>
         <br>
         
