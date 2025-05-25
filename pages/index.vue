@@ -17,7 +17,9 @@ const { data } = await useFetch(config.public.API_URL + '/posts')
         </div>
 
         <div v-for="article in data?.data" :key="article.id">
-            <h2>Article - {{ article?.title }}</h2>
+            <h2>Article -
+                <a href="https://">{{ article?.title }} </a>
+            </h2>
             <div v-html="article?.post_content"></div>
         </div>
         <br>
