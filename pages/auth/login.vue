@@ -8,5 +8,8 @@ definePageMeta({
     <div>
         <h1>Login</h1>
         <NuxtLink to="/auth/register">Register</NuxtLink>
+        <br>
+        <NuxtLink to="/admin/dashboard">Move to dashboard</NuxtLink>
+
     </div>
 </template>
