@@ -6,7 +6,7 @@ const articles = ref([1, 2, 3, 4, 5])
 
 const config=useRuntimeConfig()
 
-const { data } = await useFetch(config.API_URL + '/posts')
+const { data } = await useFetch(config.public.API_URL + '/posts')
 
 </script>
 
@@ -16,9 +16,9 @@ const { data } = await useFetch(config.API_URL + '/posts')
             <h1>List of Articles</h1>
         </div>
 
-        <div v-for="(index, article) in data" :key="index">
+        <div v-for="article in data?.data" :key="article.id">
             <h2>Article - {{ article?.title }}</h2>
-            <p>{{ article?.post_content }}</p>
+            <div v-html="article?.post_content"></div>
         </div>
         <br>
         
