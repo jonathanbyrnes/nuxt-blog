@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>
+        <div style="background-color: gainsboro;">
             <ul>
                 <li>
                     <NuxtLink to="">Home</NuxtLink>
@@ -21,7 +21,7 @@
             <slot></slot>
         </div>
 
-        <div>
+        <div style="background-color: gainsboro;">
             <h1>This is the footer</h1>
         </div>
 
