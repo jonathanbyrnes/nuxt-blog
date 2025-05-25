@@ -3,7 +3,7 @@
         <div style="background-color: gainsboro;">
             <ul>
                 <li>
-                    <NuxtLink to="">Home</NuxtLink>
+                    <NuxtLink to="/">Home</NuxtLink>
                 </li>
                 <li>
                     <NuxtLink to="/blog/about">About</NuxtLink>
@@ -15,7 +15,7 @@
                     <NuxtLink to="">Articles</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="">Register</NuxtLink>
+                    <NuxtLink to="/auth/register">Register</NuxtLink>
                 </li>
             </ul>
         </div>
