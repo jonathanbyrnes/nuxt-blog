@@ -6,6 +6,12 @@
                     <NuxtLink to="">Home</NuxtLink>
                 </li>
                 <li>
+                    <NuxtLink to="/blog/About">About</NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/blog/Contact">Contact</NuxtLink>
+                </li>
+                <li>
                     <NuxtLink to="">Articles</NuxtLink>
                 </li>
                 <li>
