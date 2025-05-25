@@ -6,7 +6,7 @@
         <NuxtLink to="/admin/create-post">Create Post</NuxtLink>
 
         <div>
-            <slot></slot>
+            <NuxtPage></NuxtPage>
         </div>
 
         <div style="background-color: gainsboro;">
