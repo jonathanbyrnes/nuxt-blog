@@ -1,7 +1,10 @@
 <template>
     <div>
 
-        
+        <NuxtLink to="/admin/articles">Articles</NuxtLink>
+        <br>
+        <NuxtLink to="/admin/create-post">Create Post</NuxtLink>
+
         <div>
             <slot></slot>
         </div>
