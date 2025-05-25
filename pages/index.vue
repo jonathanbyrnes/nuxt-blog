@@ -3,6 +3,12 @@ definePageMeta({
     layout: 'default'
 })
 const articles = ref([1, 2, 3, 4, 5])
+
+const config=useRuntimeConfig()
+
+// const { data } = await useFetch('https://localhost:8000/api/posts')
+// console.log(data.value)
+
 </script>
 
 <template>
