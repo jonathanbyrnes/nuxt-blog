@@ -6,10 +6,10 @@
                     <NuxtLink to="">Home</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="/blog/About">About</NuxtLink>
+                    <NuxtLink to="/blog/about">About</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="/blog/Contact">Contact</NuxtLink>
+                    <NuxtLink to="/blog/contact">Contact</NuxtLink>
                 </li>
                 <li>
                     <NuxtLink to="">Articles</NuxtLink>
