@@ -24,7 +24,7 @@
         <br>
         
         <div>
-            <slot></slot>
+            <NuxtPage></NuxtPage>
         </div>
 
         <div style="background-color: gainsboro;">
