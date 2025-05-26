@@ -3,9 +3,8 @@ definePageMeta({
     layout: 'auth'
 })
 
-
+const config = useRuntimeConfig();
 const loading=ref(false)
-const config = useRuntimeConfig()
 
 const registerInput = ref({
     name: '',
@@ -32,7 +31,7 @@ async function createUser() {
         if(error?.response?.status===422){
             const errors=error.response?._data
             for(const message of errors) {
-                showError(message)
+                errorMsg(message)
             }
         }
     }
