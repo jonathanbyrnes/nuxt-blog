@@ -26,6 +26,7 @@ async function createUser() {
         })
         loading.value=false
         console.log(res)
+        successMsg(res?.message)
     } catch (error) {
         loading.value=false
         if(error?.response?.status===422){
