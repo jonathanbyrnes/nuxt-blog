@@ -3,6 +3,8 @@ definePageMeta({
     layout: 'auth'
 })
 
+
+const loading=ref(false)
 const config = useRuntimeConfig()
 
 const registerInput = ref({
@@ -13,6 +15,7 @@ const registerInput = ref({
 
 async function createUser() {
     try {
+        loading.value=true
         const res = await $fetch(config.public?.API_BASE_URL + '/register', {
             headers: {
                 Accept: "application/json",
@@ -21,8 +24,10 @@ async function createUser() {
             method: 'POST',
             body: JSON.stringify(registerInput.value)
         })
+        loading.value=false
         console.log(res)
     } catch (error) {
+        loading.value=false
         if(error?.response?.status===422){
             const errors=error.response?._data
             for(const message of errors) {
@@ -49,7 +54,10 @@ async function createUser() {
 
                     <NuxtLink to="/auth/login" class="text-indigo-700">Already have an account? Login</NuxtLink>
                     <button @click="createUser"
-                        class="rounded-md text-white bg-indigo-700 text-sm font-semibold py-2">Register</button>
+                    :disabled="loading"
+                        class="rounded-md text-white bg-indigo-700 text-sm font-semibold py-2">
+                        {{ loading?'Processing...':'Create Account'}}
+                    </button>
                 </div>
             </div>
 
