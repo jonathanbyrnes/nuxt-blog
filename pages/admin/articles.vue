@@ -79,8 +79,14 @@ function deletePost(id) {
     })
 }
 
+const router=useRouter()
+const postStore=usePostStore()
+const {postInput,edit}=storeToRefs(postStore)
+
 function editPost(post) {
-    console.log(post)
+    postInput.value=post
+    edit.value=true
+    router.push('/admin/create-post')
 }
 
 </script>
