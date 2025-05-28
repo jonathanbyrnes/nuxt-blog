@@ -2,9 +2,31 @@
 definePageMeta({
     layout: 'admin'
 })
+const mockPaginationData = {
+  data: [
+    { id: 1, title: 'Post 1' },
+    { id: 2, title: 'Post 2' },
+    { id: 3, title: 'Post 3' },
+  ],
+  meta: {
+    current_page: 1,
+    last_page: 1,
+    from: 1,
+    to: 3,
+    per_page: 10,
+    total: 3
+  },
+  links: {
+    first: '/?page=1',
+    last: '/?page=1',
+    prev: null,
+    next: null
+  }
+};
+
 const config=useRuntimeConfig()
-const userData=getUserData()
 const query=ref('')
+const userData=getUserData()
 const page=ref(1)
 const { data,error,status,refresh } = await useFetch(config.public?.API_BASE_URL+ "/posts", {
     headers: {
@@ -43,8 +65,17 @@ const paginateData=async(newPageVal) => {
         <PostListTable @searchPost="searchPost" :status="status" :post="data?.data?.data"/>
 
         <TailwindPagination
-        :data="data?.data"
+        class="mt-2"
+        :data="mockPaginationData"
         @pagination-change-page="paginateData"
         />
+
     </div>
 </template>
+<style scoped>
+button.relative.inline-flex.items-center.px-4.py-2.text-sm.font-medium.border.focus\:z-20.bg-blue-50.border-blue-500.text-blue-600.z-30 {
+  background: #4f46e5;
+  color: white;
+  border-radius: 5px;
+}
+</style>
