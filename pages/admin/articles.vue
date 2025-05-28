@@ -57,6 +57,12 @@ const paginateData=async(newPageVal) => {
     await refresh
 }
 
+function deletePost(id) {
+    promptUser('Are you sure you want to delete this?').then(function() {
+        console.log('...')
+    })
+}
+
 </script>
 
 <template>
@@ -68,6 +74,7 @@ const paginateData=async(newPageVal) => {
         class="mt-2"
         :data="mockPaginationData"
         @pagination-change-page="paginateData"
+        @delete-post="deletePost"
         />
 
     </div>
