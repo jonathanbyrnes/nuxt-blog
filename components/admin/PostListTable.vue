@@ -1,7 +1,7 @@
 <script setup>
 defineProps(['posts', 'status'])
 
-const emit = defineEmits(['searchPost'])
+const emit = defineEmits(['searchPost', 'deletePost'])
 const query = ref('')
 
 async function searchPostByTitle() {
@@ -45,8 +45,12 @@ async function searchPostByTitle() {
 
                     <td class="border border-gray-300 py-2 px-4"></td>
 
-                    <td class="border border-gray-300 py-2 px-4"></td>
-
+                    <td class="border border-gray-300 py-2 px-4">
+                        <button @click="emit('deletePost', post?.id)"
+                            class="rounded-md text-white bg-red-700 text-sm font-semibold py-2 px-2">
+                            Delete
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
