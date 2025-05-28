@@ -79,15 +79,19 @@ function deletePost(id) {
     })
 }
 
+function editPost(post) {
+    console.log(post)
+}
+
 </script>
 
 <template>
     <div>
         <h1 class="text-2xl mb-2">Articles</h1>
-        <PostListTable @searchPost="searchPost" :status="status" :post="data?.data?.data" />
+        <PostListTable @delete-post="deletePost" @edit-post="editPost" @searchPost="searchPost" :status="status"
+            :post="data?.data?.data" />
 
-        <TailwindPagination class="mt-2" :data="mockPaginationData" @pagination-change-page="paginateData"
-            @delete-post="deletePost" />
+        <TailwindPagination class="mt-2" :data="mockPaginationData" @pagination-change-page="paginateData" />
 
     </div>
 </template>
