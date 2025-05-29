@@ -83,8 +83,8 @@ const router = useRouter()
 const postStore = usePostStore()
 const { postInput, edit } = storeToRefs(postStore)
 
-const uploadPostStore=useUploadPostImage()
-const {modalVal}=storeToRefs(uploadPostStore)
+const uploadPostStore = useUploadPostImage()
+const { modalVal } = storeToRefs(uploadPostStore)
 
 function editPost(post) {
     postInput.value = post
@@ -97,12 +97,17 @@ function editPost(post) {
 <template>
     <div>
         <h1 class="text-2xl mb-2">Articles</h1>
-        <UploadPostImage :show="modalVal" @getPosts="refresh"  />
+        <UploadPostImage :show="modalVal" @getPosts="refresh" />
 
-        <PostListTable @uploadImage="uploadPostStore.showModal" @delete-post="deletePost" @edit-post="editPost" @searchPost="searchPost" :status="status"
-            :post="data?.data?.data" />
+        <PostListTable v-if="data?.data" @uploadImage="uploadPostStore.showModal" @delete-post="deletePost"
+            @edit-post="editPost" @searchPost="searchPost" :status="status" :post="data?.data?.data" />
 
-        <TailwindPagination class="mt-2" :data="mockPaginationData" @pagination-change-page="paginateData" />
+        <span v-else class="shadow-md px-2 py-2 rounded-md mt-20 text-red-700 border font-semibold text-center">
+            No data found, is the API online?
+        </span>
+
+        <TailwindPagination v-if="data?.data" class="mt-2" :data="mockPaginationData"
+            @pagination-change-page="paginateData" />
 
     </div>
 </template>
