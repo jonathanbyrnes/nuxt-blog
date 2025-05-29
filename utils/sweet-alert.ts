@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-import 'sweetalert2/src/sweetalert2.css'
 export function promptUser(message: string) {
     return new Promise((resolve, reject) => {
 
