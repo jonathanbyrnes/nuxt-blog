@@ -1,11 +1,21 @@
 <script setup>
 defineProps(['posts', 'status'])
 
-const emit = defineEmits(['searchPost', 'deletePost', 'editPost'])
+const emit = defineEmits(['searchPost', 'deletePost', 'editPost', 'uploadImage'])
 const query = ref('')
 
 async function searchPostByTitle() {
     await emit('searchPost', query.value)
+}
+
+const postStore=usePostStore()
+const {edit,postInput}=storeToRefs(postStore)
+
+const router=useRouter()
+function moveToCreatePostPage() {
+    edit.value=false
+    postInput.value={}
+    router.push('/admin/create-post')
 }
 </script>
 
@@ -14,10 +24,10 @@ async function searchPostByTitle() {
         <div class="flex justify-between mb-2">
             <input @keydown="searchPostByTitle" v-model="query" placeholder="Search..." type="text"
                 class="mb-2 border rounded-md py-1 px-2 shadow-md">
-            <NuxtLink to="/admin/create-post"
+            <button @click="moveToCreatePostPage"
                 class="rounded-md text-white px-2 py-2 bg-indigo-700 text-sm font-semibold">
                 Create a Post
-            </NuxtLink>
+            </button>
         </div>
 
         <table class="bg-white rounded-md w-full shadow-md border border-gray-300">
@@ -41,11 +51,16 @@ async function searchPostByTitle() {
                         <img :src="post?.image" width="150" />
                     </td>
                     <td class="border border-gray-300 py-2 px-4"> {{ post?.title }}</td>
-                    <td class="border border-gray-300 py-2 px-4"></td>
+                    <td class="border border-gray-300 py-2 px-4">
+                                                <button @click="emit('uploadImage', post?.id)"
+                            class="rounded-md text-white bg-indigo-700 text-sm font-semibold py-2 px-2">
+                            Upload
+                        </button>
+                    </td>
 
                     <td class="border border-gray-300 py-2 px-4">
-                        <button @click="emit('editPost', post?.id)"
-                            class="rounded-md text-white bg-red-700 text-sm font-semibold py-2 px-2">
+                        <button @click="emit('editPost', post)"
+                            class="rounded-md text-white bg-indigo-700 text-sm font-semibold py-2 px-2">
                             Edit
                         </button>
                     </td>

@@ -79,13 +79,16 @@ function deletePost(id) {
     })
 }
 
-const router=useRouter()
-const postStore=usePostStore()
-const {postInput,edit}=storeToRefs(postStore)
+const router = useRouter()
+const postStore = usePostStore()
+const { postInput, edit } = storeToRefs(postStore)
+
+const uploadPostStore=useUploadPostImage()
+const {modalVal}=storeToRefs(uploadPostStore)
 
 function editPost(post) {
-    postInput.value=post
-    edit.value=true
+    postInput.value = post
+    edit.value = true
     router.push('/admin/create-post')
 }
 
@@ -94,7 +97,9 @@ function editPost(post) {
 <template>
     <div>
         <h1 class="text-2xl mb-2">Articles</h1>
-        <PostListTable @delete-post="deletePost" @edit-post="editPost" @searchPost="searchPost" :status="status"
+        <UploadPostImage :show="modalVal" @getPosts="refresh"  />
+
+        <PostListTable @uploadImage="uploadPostStore.showModal" @delete-post="deletePost" @edit-post="editPost" @searchPost="searchPost" :status="status"
             :post="data?.data?.data" />
 
         <TailwindPagination class="mt-2" :data="mockPaginationData" @pagination-change-page="paginateData" />
